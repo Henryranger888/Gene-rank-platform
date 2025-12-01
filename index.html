@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gene Rank Search</title>
+    <title>IEI Gene Hunter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,16 +16,18 @@
 
     <main class="container">
         <header>
-            <h1>Gene Rank Explorer</h1>
-            <p class="subtitle">Platform for predicting Inborn Errors of Immunity (IEI).</p>
-            <p class="subtitle">Protein list from STRINGv11.</p>
+            <h1>IEI Gene Hunter</h1>
+            <p class="subtitle">Platform for predicting Inborn Errors of Immunity (IEI) using network embeddings and
+                machine learning on STRING v11 protein–protein interaction networks.</p>
+            <p class="method-text">Ranks 18,349 STRING v11 proteins based on similarity to known IEI genes.</p>
         </header>
 
         <section class="search-section">
             <div class="search-bar-wrapper">
-                <input type="text" id="geneInput" placeholder="Enter gene symbol (e.g., TRAF6)" autocomplete="off">
-                <button id="searchBtn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <input type="text" id="geneInput" placeholder="Enter HGNC gene symbol (e.g., TRAF6, CD4, STAT3)"
+                    autocomplete="off" aria-label="Search gene symbol">
+                <button id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -34,32 +36,42 @@
             </div>
         </section>
 
-        <section id="resultContainer" class="result-container hidden">
+        <!-- Result Container -->
+        <section id="resultContainer" class="result-container hidden" aria-live="polite">
             <div class="result-card">
-                <h2 id="geneNameDisplay"></h2>
-                <div class="rank-display">
-                    <span class="rank-label">Rank / Total</span>
-                    <span id="rankValue" class="rank-value"></span>
-                </div>
+                <span id="geneSymbol" class="gene-symbol"></span>
 
-                <div id="neighborsContainer" class="neighbors-container hidden">
-                    <!-- Neighbors will be injected here -->
+                <!-- Dynamic Content Area -->
+                <div id="resultContent">
+                    <!-- Content injected by JS -->
                 </div>
-
-                <p id="notFoundMessage" class="hidden">It is not protein encoded gene</p>
             </div>
         </section>
 
-        <footer>
-            <div class="footer-content">
-                <p><strong>Ref:</strong> A Machine Learning Framework Using Network Embeddings for Predicting Inborn
-                    Errors of Immunity Genes</p>
-                <p><strong>Correspondence:</strong> Henry Sheng, School of Medicine, National Yang Ming Chiao Tung
-                    University</p>
-                <p><strong>Email:</strong> henryranger888@gmail.com</p>
+        <!-- Top Genes Strip -->
+        <section class="top-genes-section">
+            <h3 class="section-heading">Top IEI candidates</h3>
+            <div id="topGenesStrip" class="chips-container">
+                <!-- Chips injected by JS -->
             </div>
-        </footer>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>IEI Gene Hunter v1.0</p>
+                <p>Last updated: November 2025</p>
+            </div>
+            <div class="footer-refs">
+                <p><strong>Tool Reference:</strong> A Machine Learning Framework Using Network Embeddings for Predicting
+                    Inborn Errors of Immunity Genes.</p>
+                <p><strong>STRING Reference:</strong> Szklarczyk et al. (2019). STRING v11: protein-protein association
+                    networks with increased coverage. <a href="https://doi.org/10.1093/nar/gky1131"
+                        target="_blank">Nucleic Acids Res. 47(D1):D607–D613</a>.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
