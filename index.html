@@ -18,8 +18,10 @@
         <header>
             <h1>IEI Gene Hunter</h1>
             <p class="subtitle">Platform for predicting Inborn Errors of Immunity (IEI) using network embeddings and
-                machine learning on STRING v11 protein–protein interaction networks.</p>
-            <p class="method-text">Ranks 18,349 STRING v11 proteins based on similarity to known IEI genes.</p>
+                machine learning on the STRING v11 functional association network.</p>
+            <p class="method-text">Ranks 17,283 previously unlabelled STRING v11 proteins by model score.
+                The 1,066 genes used as training labels (414 IUIS-2022 IEI genes, 652 non-immune
+                controls) are excluded from the ranking and shown with their label instead.</p>
         </header>
 
         <section class="search-section">
@@ -55,17 +57,24 @@
                 <!-- Chips injected by JS -->
             </div>
         </section>
+        <section class="top-genes-section">
+            <h3 class="section-heading">Interpreting the model score</h3>
+            <p class="method-text">The model score is the classifier's raw output and is used for ranking only.
+                It is not calibrated and is not a probability that a gene causes an inborn error of immunity.
+                A small number of genes share identical scores; tied genes receive the same rank.</p>
+        </section>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-info">
-                <p>IEI Gene Hunter v1.0</p>
-                <p>Last updated: November 2025</p>
+                <p>IEI Gene Hunter v2.0</p>
+                <p>Ranking: leakage-free model (July 2026)</p>
             </div>
             <div class="footer-refs">
                 <p><strong>Tool Reference:</strong> A Machine Learning Framework Using Network Embeddings for Predicting
                     Inborn Errors of Immunity Genes.</p>
+                <p><strong>Pathway data:</strong> Reactome release 70 (September 2019).</p>
                 <p><strong>STRING Reference:</strong> Szklarczyk et al. (2019). STRING v11: protein-protein association
                     networks with increased coverage. <a href="https://doi.org/10.1093/nar/gky1131"
                         target="_blank">Nucleic Acids Res. 47(D1):D607–D613</a>.</p>
