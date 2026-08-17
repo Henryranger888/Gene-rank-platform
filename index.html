@@ -18,8 +18,8 @@
         <header>
             <h1>IEI Gene Hunter</h1>
             <p class="subtitle">Platform for predicting Inborn Errors of Immunity (IEI) using network embeddings and
-                machine learning on the STRING v11 functional association network.</p>
-            <p class="method-text">Serves the consensus ranking of 17,252 STRING v11 genes.
+                machine learning on the STRING v11.0 functional association network.</p>
+            <p class="method-text">Serves the consensus ranking of 17,252 STRING v11.0 genes.
                 The 1,097 genes used as training labels (403 IUIS-2022 IEI genes, 694 screened
                 non-immune controls) are excluded from the ranking and shown with their label instead.</p>
         </header>
@@ -60,10 +60,7 @@
         <section class="top-genes-section">
             <h3 class="section-heading">Interpreting the ranking</h3>
             <p class="method-text">Each gene's position is a consensus over three component models
-                (XGBoost, RBF-SVM, ElasticNet) built on exact integer rank keys; ties are broken by
-                gene symbol, so the list is uniquely ordered and no two genes share a rank. The
-                percentile shown is (N − R)/(N − 1) with N = 17,252 — 1.000000 is the top of the
-                list. No model score is displayed and nothing here is a probability.</p>
+                (XGBoost, SVM, ElasticNet) built on exact integer rank keys.</p>
         </section>
     </main>
 
@@ -71,7 +68,7 @@
         <div class="footer-content">
             <div class="footer-info">
                 <p>IEI Gene Hunter v3.0</p>
-                <p>Ranking: consensus on exact integer keys (August 2026) — matches the Figshare deposit</p>
+                <p>August 2026</p>
             </div>
             <div class="footer-refs">
                 <p><strong>Tool Reference:</strong> A Machine Learning Framework Using Network Embeddings for Predicting

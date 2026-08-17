@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const topGenesStrip = document.getElementById('topGenesStrip');
 
     let geneData = {};
-    // Ranked background = the 17,252 STRING v11 genes outside the training labels.
+    // Ranked background = the 17,252 STRING v11.0 genes outside the training labels.
     // The 1,097 training-label genes (403 IUIS-2022 positives + 694 screened non-immune
     // controls) are excluded from the ranking by construction and shown with their label.
     // Regenerate data.json with build_data.py if the ranking changes; it prints the
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContent.appendChild(text);
     }
 
-    // Catalogue IEI gene with no node in the STRING v11 network: known gene,
+    // Catalogue IEI gene with no node in the STRING v11.0 network: known gene,
     // deliberately distinct from the out-of-scope message for unrecognised symbols.
     function renderNoNodeState(info) {
         const badge = document.createElement('span');
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const note = document.createElement('div');
         note.className = 'context-message';
-        note.textContent = 'This catalogued IEI gene has no node in the STRING v11 network build used here, so it is not ranked.';
+        note.textContent = 'This catalogued IEI gene has no node in the STRING v11.0 network build used here, so it is not ranked.';
         resultContent.appendChild(note);
     }
 
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Out of scope: symbol not recognised.
             </p>
             <p class="method-text">
-                IEI Gene Hunter covers the 18,349 genes of this STRING v11 build plus the
+                IEI Gene Hunter covers the 18,349 genes of this STRING v11.0 build plus the
                 catalogued IEI genes without a network node. This symbol matches none of them —
                 check the spelling or the current HGNC symbol.
             </p>
@@ -165,12 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = `
             <span class="rank-value">Consensus rank ${info.r.toLocaleString()} / ${RANKED_TOTAL.toLocaleString()}</span>
-            <span class="rank-context">Uniquely ordered consensus over three component models; ties broken by gene symbol, so no two genes share a rank.</span>
-            <div style="margin-top: 0.25rem; font-size: 0.9rem; color: var(--accent);">Percentile ${pct.toFixed(6)} (1 = top of the list)</div>
+            <span class="rank-context">Uniquely ordered consensus over three component models.</span>
+            <div style="margin-top: 0.25rem; font-size: 0.9rem; color: var(--accent);">Percentile ${pct.toFixed(6)}</div>
             <div style="margin-top: 0.5rem; font-size: 0.9rem;">
                 <strong>Component ranks</strong> —
                 XGBoost: ${info.rx.toLocaleString()} ·
-                RBF-SVM: ${info.rr.toLocaleString()} ·
+                SVM: ${info.rr.toLocaleString()} ·
                 ElasticNet: ${info.re.toLocaleString()}
             </div>
         `;
